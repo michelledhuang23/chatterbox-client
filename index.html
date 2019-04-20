@@ -27,12 +27,14 @@
       <div class="spinner"><img src="client/images/spiffygif_46x46.gif"></div>
       <div id="rooms">
         Room:
-        <select></select>
-        <button>Add Room</button>
+        <select id = "rooms select">
+        </select>
+        <input type="text" name="roomName" id="roomName"/>
+        <button id="rooms button">Add Room</button>
       </div>
       <form action="#" id="send" method="post">
         <input type="text" name="message" id="message"/>
-        <input type="submit" name="submit" class="submit"/>
+        <input type="submit" name="submit" id="submitMessage"/>
       </form>
     </div>
     <div id="chats"></div>
