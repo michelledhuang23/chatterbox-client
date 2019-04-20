@@ -1,7 +1,7 @@
 var RoomsView = {
 
   $button: $('#rooms button'),
-  $select: $('#roomSelect'),
+  $select: $('select'),
 
   initialize: function() {
     RoomsView.$select.change(function() {
@@ -14,6 +14,7 @@ var RoomsView = {
     });
   },
 
+  //adds room to drop down menu
   renderRoom: function(roomName) {
     if(!roomName) {
       return;
@@ -23,6 +24,7 @@ var RoomsView = {
     return;
   },
 
+  //loops through each unique room in the rooms Set and calls the renderRoom method
   render: function() {
     // RoomsView.$select.html('');
     for (const value of Rooms.rooms) {
