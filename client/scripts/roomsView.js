@@ -1,29 +1,33 @@
 var RoomsView = {
 
   $button: $('#rooms button'),
-  $select: $('#rooms select'),
+  $select: $('#roomSelect'),
 
   initialize: function() {
-    RoomsView.$button.on('click', RoomsView.renderRoom);
+    RoomsView.$select.change(function() {
+      MessagesView.render();
+    });
+    RoomsView.$button.on('click', function(event) {
+      Rooms.add($('#roomName').val());
+      RoomsView.render();
+      $('#roomName').val('');
+    });
   },
 
   renderRoom: function(roomName) {
-    // var temp = $('#roomName').val();
-    var temp = roomName;
-    if(!temp) {
-      alert('Enter a valid room name, jerk!');
+    if(!roomName) {
       return;
     }
-    if (Rooms.hasOwnProperty(temp)) {
-      return;
-    }
-    Rooms[temp] = temp;
-    RoomsView.$select.append(`<option> ${temp} </option>`);
-    $('#roomName').val('');
+
+    RoomsView.$select.append(`<option value="${roomName}"> ${roomName} </option>`);
     return;
   },
 
   render: function() {
+    // RoomsView.$select.html('');
+    for (const value of Rooms.rooms) {
+      this.renderRoom(value);
+    }
   }
 
 };

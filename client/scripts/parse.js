@@ -30,3 +30,7 @@ var Parse = {
   }
 
 };
+
+Parse.readAll(function(data) {
+  console.log(data);
+});

@@ -1,2 +1,3 @@
 var Messages = {
+  arr: []
 };
