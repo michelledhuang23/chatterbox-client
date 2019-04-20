@@ -1,7 +1,7 @@
 var MessagesView = {
 
   $chats: $('#chats'),
-  $submit: $('#submitMessage'),
+  $submit: $('.submit'),
   $username: $('div.username'),
 
   initialize: function() {
@@ -24,7 +24,11 @@ var MessagesView = {
   render: function() {
     MessagesView.$chats.html('');
     var selectedRoom = $('select option:selected').val();
-    for (const obj of Messages.arr) {
+    var sortedMessagesByTime = Messages.arr.slice(0);
+    sortedMessagesByTime.sort(function(a,b) {
+      return a.createdAt - b.createdAt;
+    });
+    for (const obj of sortedMessagesByTime) {
       if (obj.roomname === selectedRoom) {
         this.renderMessage(obj);
       }
@@ -36,7 +40,7 @@ var MessagesView = {
     var text = message.text;
     var username = message.username;
     var template = MessageView.render({username: username, message: text});
-    MessagesView.$chats.append(template);
+    MessagesView.$chats.prepend(template);
   },
 
   // encodeHTML: function(s) {

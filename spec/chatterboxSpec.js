@@ -113,12 +113,12 @@ describe('chatterbox', function() {
 
     it('should try to send a message upon clicking submit', function() {
       sinon.spy(Parse, 'create');
-
+      $('form .submit').prop('disabled', false);
       App.initialize();
-      $('#message').val('Why so many Mel Brooks quotes?');
-      $('form .submit').trigger('submit');
+      $('form #message').val('Why so many Mel Brooks quotes?');
+      $('form .submit').prop('disabled', false);
+      $('form .submit').trigger('click');
       expect(Parse.create.called).to.be.true;
-
       Parse.create.restore();
     });
   });

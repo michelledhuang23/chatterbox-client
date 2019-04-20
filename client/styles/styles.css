@@ -69,7 +69,9 @@ form input[type=text] {
 }
 
 .chat:hover {
-    background-color: #ddd;
+    background-color: lightblue;
+    border: 1px darkslategrey solid;
+    color: black;
 }
 
 .spinner {
